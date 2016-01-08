@@ -230,12 +230,10 @@ module Colonel
             # _id is "{id}-{state}"
             id: {
               type: 'string',
-              store: 'yes',
               index: 'not_analyzed'
             },
             state: {
               type: 'string',
-              store: 'yes',
               index: 'not_analyzed'
             },
             updated_at: {
