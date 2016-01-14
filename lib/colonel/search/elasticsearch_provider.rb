@@ -155,9 +155,19 @@ module Colonel
 
       # Public: The Elasticsearch client
       def es_client
-        @es_client ||= ::Elasticsearch::Client.new(host:            Colonel.config.elasticsearch_uri,
-                                                   log:             false,
-                                                   request_timeout: Colonel.config.elasticsearch_timeout_secs)
+        client_opts = {
+          host:            Colonel.config.elasticsearch_uri,
+          log:             false
+        }
+
+        if timeout = Colonel.config.elasticsearch_timeout_secs
+          if timeout <= 0
+            fail "Invalid Colonel.config.elasticsearch_timeout_secs: #{timeout} must be > 0"
+          end
+          client_opts[:request_timeout] = timeout
+        end
+
+        @es_client ||= ::Elasticsearch::Client.new(client_opts)
       end
 
       # Internal: idempotently create the ES index
