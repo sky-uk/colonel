@@ -21,13 +21,25 @@ require 'colonel/indexer'
 module Colonel
   # Public: Sets configuration options.
   #
-  # Colonel.config.storage_path       - location to store git repo on disk
-  # Colonel.config.index_name         - the name of elasticsearch index to store into
-  # Colonel.config.elasticsearch_uri  - host for elasticsearch
-  # Colonel.config.rugged_backend     - storage backend, an instance of Rugged::Backend
+  # Colonel.config.storage_path               - location to store git repo on disk
+  # Colonel.config.index_name                 - the name of elasticsearch index to store into
+  # Colonel.config.elasticsearch_uri          - host for elasticsearch
+  # Colonel.config.rugged_backend             - storage backend, an instance of Rugged::Backend
+  # Colonel.config.elasticsearch_timeout_secs - request timeout for elasticsearch
   #
   # Returns a config struct
   def self.config
-    @config ||= Struct.new(:storage_path, :index_name, :elasticsearch_uri, :rugged_backend).new('storage', 'colonel-storage', 'localhost:9200', nil)
+    defaults = {
+      :storage_path => 'storage',
+      :index_name => 'colonel-storage',
+      :elasticsearch_uri => 'localhost:9200',
+      :rugged_backend => nil,
+      :elasticsearch_timeout_secs => 60
+    }
+
+    ordered_struct_fields = defaults.keys
+    ordered_struct_values = ordered_struct_fields.map{|k| defaults[k]}
+
+    @config ||= Struct.new(*ordered_struct_fields).new(*ordered_struct_values)
   end
 end
