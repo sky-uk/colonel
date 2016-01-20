@@ -19,8 +19,6 @@ And then execute:
 
 ### Dependencies
 
-Up to gem version 0.7.x the Colonel can work with elasticsearch 2.x version.
-
 The Colonel requires at least [elasticsearch](http://www.elasticsearch.org) 1.0 to work.
 
 NOTE: The Colonel currently doesn't work with elasticsearch 1.2 or later, which is a known issue

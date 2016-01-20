@@ -195,8 +195,8 @@ module Colonel
           revision_type_name=> revision_mapping
         }
 
-        es_client.indices.put_mapping index: index_name, type: revision_type_name, body: revision_body
         es_client.indices.put_mapping index: index_name, type: type_name, body: item_body
+        es_client.indices.put_mapping index: index_name, type: revision_type_name, body: revision_body
 
         scopes.each do |name, preds|
           name = "#{type_name}_#{name}"
@@ -242,12 +242,10 @@ module Colonel
             # _id is "{id}-{state}"
             id: {
               type: 'string',
-              store: 'yes',
               index: 'not_analyzed'
             },
             state: {
               type: 'string',
-              store: 'yes',
               index: 'not_analyzed'
             },
             updated_at: {
