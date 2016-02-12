@@ -120,6 +120,7 @@ module Colonel
 
     # Public: Revision equality check by id.
     def ==(other)
+      return false unless other
       id == (other && other.id)
     end
 
