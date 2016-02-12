@@ -120,8 +120,7 @@ module Colonel
 
     # Public: Revision equality check by id.
     def ==(other)
-      return false unless other
-      id == (other && other.id)
+      other && id == other.id
     end
 
     # Public: Checks whether a revision is the internal root revision which provides
