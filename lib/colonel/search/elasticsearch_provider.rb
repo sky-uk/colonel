@@ -195,8 +195,9 @@ module Colonel
           revision_type_name=> revision_mapping
         }
 
-        es_client.indices.put_mapping index: index_name, type: type_name, body: item_body
+
         es_client.indices.put_mapping index: index_name, type: revision_type_name, body: revision_body
+        es_client.indices.put_mapping index: index_name, type: type_name, body: item_body
 
         scopes.each do |name, preds|
           name = "#{type_name}_#{name}"
