@@ -1,6 +1,4 @@
-%YAML 1.2
 ---
-
 - name: check if elasticsearch is installed
   shell: 'dpkg-query -l elasticsearch | grep -e "ii\s*elasticsearch\s*{{elasticsearch.version}}"'
   register: is_elasticsearch_installed
@@ -13,7 +11,7 @@
        state=present
   with_items:
   - openjdk-7-jre-headless
-  sudo: yes
+  become: yes
   tags: elasticsearch
 
 - name: download elasticsearch
@@ -26,19 +24,17 @@
 - name: install elasticsearch
   when: is_elasticsearch_installed|failed
   command: dpkg -i /tmp/elasticsearch-{{elasticsearch.version}}.deb
-  sudo: yes
+  become: yes
   tags: elasticsearch
 
 - name: elasticsearch plugins
-  shell: './bin/plugin -install {{item.location}}
-          chdir=/usr/share/elasticsearch/
-          creates=/usr/share/elasticsearch/plugins/{{item.name}}'
+  shell: 'yes "Y" | ./bin/plugin install {{item.name}}
+          chdir=/usr/share/elasticsearch/'
   with_items:
-  - name: marvel
-    location: elasticsearch/marvel/latest
+  - name: delete-by-query
   notify:
    - restart elasticsearch
-  sudo: yes
+  become: yes
   tags: elasticsearch
 
 - name: elasticsearch service environment variables
@@ -47,10 +43,10 @@
               regexp='^export {{item.variable}}'
               insertafter='^export ES_JAVA_OPTS'
               line='export {{item.variable}}={{item.value}}'"
-  with_items: ${elasticsearch.environment}
+  with_items: "{{elasticsearch.environment}}"
   notify:
    - restart elasticsearch
-  sudo: yes
+  become: yes
   tags: elasticsearch
 
 - name: ensure elasticsearch is running and enabled
@@ -58,5 +54,5 @@
   service: name=elasticsearch
            state=running
            enabled=yes
-  sudo: yes
+  become: yes
   tags: elasticsearch

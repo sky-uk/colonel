@@ -1,12 +1,11 @@
-%YAML 1.2
 ---
 - name: Update apt
   apt: update_cache=yes
-  sudo: yes
+  become: yes
 
 - name: Install dependencies
   apt: pkg={{ item }}
-  sudo: yes
+  become: yes
   with_items:
     - build-essential
     - curl

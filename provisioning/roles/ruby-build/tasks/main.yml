@@ -1,4 +1,3 @@
-%YAML 1.2
 ---
 - name: Install ruby build
   git: repo=git://github.com/sstephenson/ruby-build.git
