@@ -1,4 +1,5 @@
 module Colonel
+  require 'securerandom'
   # Public: A versioned structured document storage with publishing pipeline support. Documents are internally
   # stored as a single file in a separate git repository for each document. Each state in the publishing
   # process is a separate branch. When saved, document serializes the content to JSON and saves it. Loading
