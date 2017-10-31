@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/redbadger/rugged.git
+  remote: https://github.com/redbadger/rugged.git
   revision: c405e9f6b7d23300e0ae6b2175930920c743fa6d
   branch: backends
   submodules: true
@@ -99,3 +99,9 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   thor
+
+RUBY VERSION
+   ruby 2.2.8p477
+
+BUNDLED WITH
+   1.15.4
