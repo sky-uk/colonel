@@ -1,4 +1,3 @@
-%YAML 1.2
 ---
 - name: install global dependencies
   shell: bash -lc "gem install {{item.name}} --no-ri --no-rdoc"
@@ -10,5 +9,4 @@
 
 - name: install dependencies
   shell: cd /vagrant; bash -lc "bundle install"
-  sudo: no
   tags: dependencies
