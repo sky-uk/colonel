@@ -118,7 +118,7 @@ module Colonel
 
       cmds = [
         {index: {_index: index_name, _type: type_name, _id: item_id, data: body}},
-        {index: {_index: index_name, _type: type_name, _id: rev_id, _parent: item_id, data: body}}
+        {index: {_index: index_name, _type: type_name, _id: item_id, _parent: item_id, data: body}}
       ]
 
       scopes.each do |scope, pred|
