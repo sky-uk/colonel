@@ -211,7 +211,7 @@ module Colonel
       def default_revision_mapping(type_name)
         {
           _source: { enabled: false }, # you only get what you store
-          parent_id: { type: type_name },
+          parent_id: type_name,
           properties: {
             # _id is "{id}-{rev}"
             id: {
