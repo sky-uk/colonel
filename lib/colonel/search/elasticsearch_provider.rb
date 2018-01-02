@@ -215,17 +215,17 @@ module Colonel
           properties: {
             # _id is "{id}-{rev}"
             id: {
-              type: 'text',
+              type: 'string',
               store: 'yes',
               index: 'not_analyzed'
             },
             revision: {
-              type: 'text',
+              type: 'string',
               store: 'yes',
               index: 'not_analyzed'
             },
             state: {
-              type: 'text',
+              type: 'string',
               store: 'yes',
               index: 'not_analyzed'
             },
@@ -242,12 +242,12 @@ module Colonel
           properties: {
             # _id is "{id}-{state}"
             id: {
-              type: 'text',
+              type: 'string',
               store: 'yes',
               index: 'not_analyzed'
             },
             state: {
-              type: 'text',
+              type: 'string',
               store: 'yes',
               index: 'not_analyzed'
             },
