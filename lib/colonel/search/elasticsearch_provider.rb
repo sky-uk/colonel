@@ -215,19 +215,16 @@ module Colonel
           properties: {
             # _id is "{id}-{rev}"
             id: {
-              type: 'text',
-              store: 'yes',
-              index: 'not_analyzed'
+              type: 'keyword',
+              store: 'yes'
             },
             revision: {
-              type: 'text',
-              store: 'yes',
-              index: 'not_analyzed'
+              type: 'keyword',
+              store: 'yes'
             },
             state: {
-              type: 'text',
-              store: 'yes',
-              index: 'not_analyzed'
+              type: 'keyword',
+              store: 'yes'
             },
             updated_at: {
               type: 'date'
