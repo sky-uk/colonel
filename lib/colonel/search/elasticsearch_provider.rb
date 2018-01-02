@@ -117,7 +117,7 @@ module Colonel
       rev_id = "#{document.id}-#{revision.id}"
 
       cmds = [
-        {index: {_index: index_name, _type: type_name, _id: item_id, data: body}}
+        {index: {_index: index_name, _type: type_name, _id: item_id, data: body}},
         {index: {_index: "#{index_name}_rev", _type: revision_type_name, _id: rev_id, _parent: item_id, data: body}}
       ]
 
