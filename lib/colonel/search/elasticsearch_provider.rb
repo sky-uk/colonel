@@ -117,8 +117,8 @@ module Colonel
       rev_id = "#{document.id}-#{revision.id}"
 
       cmds = [
-        {index: {_index: index_name, _type: type_name, _id: item_id, data: body}},
-        {index: {_index: index_name, _type: revision_type_name, _id: rev_id, parent_id: item_id, data: body}}
+        {index: {_index: index_name, _type: type_name, _id: item_id, data: body}}
+        {index: {_index: index_name, _type: type_name, _id: rev_id, _parent: item_id, data: body}}
       ]
 
       scopes.each do |scope, pred|
@@ -211,7 +211,7 @@ module Colonel
       def default_revision_mapping(type_name)
         {
           _source: { enabled: false }, # you only get what you store
-          parent_id: type_name,
+          _parent: { type: type_name},
           properties: {
             # _id is "{id}-{rev}"
             id: {
