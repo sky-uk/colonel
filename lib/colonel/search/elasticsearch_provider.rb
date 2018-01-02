@@ -216,15 +216,15 @@ module Colonel
             # _id is "{id}-{rev}"
             id: {
               type: 'keyword',
-              store: 'yes'
+              store: true
             },
             revision: {
               type: 'keyword',
-              store: 'yes'
+              store: true
             },
             state: {
               type: 'keyword',
-              store: 'yes'
+              store: true
             },
             updated_at: {
               type: 'date'
@@ -240,11 +240,11 @@ module Colonel
             # _id is "{id}-{state}"
             id: {
               type: 'keyword',
-              store: 'yes'
+              store: true
             },
             state: {
               type: 'keyword',
-              store: 'yes'
+              store: true
             },
             updated_at: {
               type: 'date'
