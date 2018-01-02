@@ -239,14 +239,12 @@ module Colonel
           properties: {
             # _id is "{id}-{state}"
             id: {
-              type: 'text',
-              store: 'yes',
-              index: 'not_analyzed'
+              type: 'keyword',
+              store: 'yes'
             },
             state: {
-              type: 'text',
-              store: 'yes',
-              index: 'not_analyzed'
+              type: 'keyword',
+              store: 'yes'
             },
             updated_at: {
               type: 'date'
